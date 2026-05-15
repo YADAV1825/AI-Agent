@@ -1,4 +1,6 @@
-# 🤖 Opus Desktop AI Agent
+# 🤖 OS-Level AI Agent (API/offline/personal Runtime connector based)
+
+> **Current implementation is a sample with API key from deployment via lightning AI for inference**
 
 > **A Sophisticated MVP Platform That Transforms Any API Key into an Autonomous OS-Level Intelligent Agent**
 
