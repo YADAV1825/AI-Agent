@@ -1,0 +1,377 @@
+Agent started.
+
+=== Task ===
+create a file named notes3.txt and in that write about the project in C:\Users\yrohi\Documents\CODING\PROJECTS\AI-Agent\Portfolio what is there in file you can read if you want by taking them as input by first running a ls command to know the files there and then using them for input and then from ls you can use the files names and open these files there is a .pdf read it and tell me what is there in that pdf
+
+Model: lightning-ai/gpt-oss-120b
+Max steps: 8
+----------------------------------------------------------------------
+
+[Step 1] Planning...
+RAW:
+{
+  "action": "list_dir",
+  "path": "C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio",
+  "reason": "list files to identify PDF and other contents"
+}
+PARSED:
+{
+  "action": "list_dir",
+  "path": "C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio",
+  "reason": "list files to identify PDF and other contents",
+  "input": "",
+  "selector": "",
+  "text": "",
+  "code": ""
+}
+RESULT:
+index.html
+notes3.txt
+Resume_rohit_yadav.pdf
+
+[Step 2] Planning...
+RAW:
+{
+  "action": "run_python",
+  "code": "import PyPDF2, os, json, sys\npdf_path = r'C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\Resume_rohit_yadav.pdf'\nif not os.path.exists(pdf_path):\n    print('PDF not found')\n    sys.exit(0)\nwith open(pdf_path, 'rb') as f:\n    reader = PyPDF2.PdfReader(f)\n    text = ''\n    for page in reader.pages:\n        text += page.extract_text() + '\\n'\nprint(json.dumps({'pdf_text': text[:2000]}))",
+  "reason": "Extract text from the PDF to summarize its content before writing notes3.txt"
+}
+PARSED:
+{
+  "action": "run_python",
+  "code": "import PyPDF2, os, json, sys\npdf_path = r'C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\Resume_rohit_yadav.pdf'\nif not os.path.exists(pdf_path):\n    print('PDF not found')\n    sys.exit(0)\nwith open(pdf_path, 'rb') as f:\n    reader = PyPDF2.PdfReader(f)\n    text = ''\n    for page in reader.pages:\n        text += page.extract_text() + '\\n'\nprint(json.dumps({'pdf_text': text[:2000]}))",
+  "reason": "Extract text from the PDF to summarize its content before writing notes3.txt",
+  "input": "",
+  "path": "",
+  "selector": "",
+  "text": ""
+}
+RESULT:
+run_python failed (1):
+Traceback (most recent call last):
+  File "C:\Users\yrohi\AppData\Local\Temp\tmpsj4x4lt_\snippet.py", line 1, in <module>
+    import PyPDF2, os, json, sys
+ModuleNotFoundError: No module named 'PyPDF2'
+
+[Step 3] Planning...
+RAW:
+{
+  "action": "shell",
+  "code": "pip install PyPDF2",
+  "reason": "Install PyPDF2 to enable reading the PDF file"
+}
+PARSED:
+{
+  "action": "shell",
+  "code": "pip install PyPDF2",
+  "reason": "Install PyPDF2 to enable reading the PDF file",
+  "input": "",
+  "path": "",
+  "selector": "",
+  "text": ""
+}
+RESULT:
+(no output)
+
+[Step 4] Planning...
+RAW:
+{
+  "action": "shell",
+  "input": "pip install PyPDF2",
+  "reason": "Install PyPDF2 to enable reading the PDF file"
+}
+PARSED:
+{
+  "action": "shell",
+  "input": "pip install PyPDF2",
+  "reason": "Install PyPDF2 to enable reading the PDF file",
+  "path": "",
+  "selector": "",
+  "text": "",
+  "code": ""
+}
+RESULT:
+Collecting PyPDF2
+  Using cached pypdf2-3.0.1-py3-none-any.whl.metadata (6.8 kB)
+Using cached pypdf2-3.0.1-py3-none-any.whl (232 kB)
+Installing collected packages: PyPDF2
+Successfully installed PyPDF2-3.0.1
+
+[Step 5] Planning...
+RAW:
+{
+  "action": "run_python",
+  "code": "import PyPDF2, os\npdf_path = r\"C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\Resume_rohit_yadav.pdf\"\ntxt_path = r\"C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\notes3.txt\"\nwith open(pdf_path, \"rb\") as f:\n    reader = PyPDF2.PdfReader(f)\n    text = \"\".join(page.extract_text() or \"\" for page in reader.pages)\nwith open(txt_path, \"w\", encoding=\"utf-8\") as f:\n    f.write(\"Summary of the PDF content:\\n\\n\")\n    f.write(text.strip())\nprint(\"File written.\")",
+  "reason": "Read the PDF and write its content summary into notes3.txt"
+}
+PARSED:
+{
+  "action": "run_python",
+  "code": "import PyPDF2, os\npdf_path = r\"C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\Resume_rohit_yadav.pdf\"\ntxt_path = r\"C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\notes3.txt\"\nwith open(pdf_path, \"rb\") as f:\n    reader = PyPDF2.PdfReader(f)\n    text = \"\".join(page.extract_text() or \"\" for page in reader.pages)\nwith open(txt_path, \"w\", encoding=\"utf-8\") as f:\n    f.write(\"Summary of the PDF content:\\n\\n\")\n    f.write(text.strip())\nprint(\"File written.\")",
+  "reason": "Read the PDF and write its content summary into notes3.txt",
+  "input": "",
+  "path": "",
+  "selector": "",
+  "text": ""
+}
+RESULT:
+File written.
+
+[Step 6] Planning...
+RAW:
+{
+  "action": "run_python",
+  "code": "import PyPDF2, os\npdf_path = r'C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\Resume_rohit_yadav.pdf'\nnotes_path = r'C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\notes3.txt'\nwith open(pdf_path, 'rb') as f:\n    reader = PyPDF2.PdfReader(f)\n    text = ''\n    for page in reader.pages:\n        text += page.extract_text() + '\\n'\nwith open(notes_path, 'w', encoding='utf-8') as f:\n    f.write('Content of Resume_rohit_yadav.pdf:\\n')\n    f.write(text)\nprint('PDF content written to notes3.txt')",
+  "reason": "Read the PDF and write its contents into notes3.txt as required"
+}
+PARSED:
+{
+  "action": "run_python",
+  "code": "import PyPDF2, os\npdf_path = r'C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\Resume_rohit_yadav.pdf'\nnotes_path = r'C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\notes3.txt'\nwith open(pdf_path, 'rb') as f:\n    reader = PyPDF2.PdfReader(f)\n    text = ''\n    for page in reader.pages:\n        text += page.extract_text() + '\\n'\nwith open(notes_path, 'w', encoding='utf-8') as f:\n    f.write('Content of Resume_rohit_yadav.pdf:\\n')\n    f.write(text)\nprint('PDF content written to notes3.txt')",
+  "reason": "Read the PDF and write its contents into notes3.txt as required",
+  "input": "",
+  "path": "",
+  "selector": "",
+  "text": ""
+}
+RESULT:
+PDF content written to notes3.txt
+
+[Step 7] Planning...
+RAW:
+{
+  "action": "run_python",
+  "code": "import pathlib, json, sys\nfile_path = pathlib.Path(r\"C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\notes3.txt\")\ncontent = file_path.read_text(encoding='utf-8')\nprint(content)",
+  "reason": "Read the PDF content that was written to notes3.txt to show the user"
+}
+PARSED:
+{
+  "action": "run_python",
+  "code": "import pathlib, json, sys\nfile_path = pathlib.Path(r\"C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\notes3.txt\")\ncontent = file_path.read_text(encoding='utf-8')\nprint(content)",
+  "reason": "Read the PDF content that was written to notes3.txt to show the user",
+  "input": "",
+  "path": "",
+  "selector": "",
+  "text": ""
+}
+RESULT:
+Content of Resume_rohit_yadav.pdf:
+Rohit Yadav
+Built 25+ LLMs from scratch•120M–1.4B params•TPU clusters•Trained on 500 Billion+ tokens
++91 8849994303|yrohit1825@gmail.com |linkedin.com/in/rohit-yadav-25535b256 |github.com/YADAV1825 |
+rohit-portfolio-yadav1825.vercel.app
+Education
+National Institute of Technology, JalandharJalandhar, India
+Bachelor of Technology in Information Technology Aug 2023 – Aug 2027
+Green Valley School for ChildrenGandhinagar, India
+CBSE Board 12th May 2021 – May 2023
+Professional Summary
+Third-year undergraduate and Systems + AI builder who enjoys building complex systems from scratch. Built 25+
+LLMs from scratch (120M–1.4B parameters) on Google’s TPU clusters, working with 10TB+ datasets (PILE, DOLMA)
+and 500B+ tokens. Experienced inpretraining, fine-tuning, and continual pretrainingof large-scale models.
+Designed high-throughput data pipelines and tokenization workflows for distributed training. Experience developing
+clinical-scale genomic ML systems and performance-critical infrastructure. Awarded Google TPU Research Cloud (TRC)
+grant and AMD MI300X compute access for large-scale experimentation.
+Experience
+Full-Stack Web Developer InternJun 2025 – Jul 2025
+Skylark Express Delhi Pvt Ltd On-site, Gurugram
+•Contributed to the development of an internal logistics tracking dashboard, improving data visibility and
+operational workflows.
+•Built and optimized frontend components usingReact, Next.js, and TypeScript, focusing on performance and
+reusability.
+•IntegratedREST APIsto enable seamless data flow between backend services and user interfaces.
+•Improved UI responsiveness and system efficiency, enhancing overall user experience for internal teams.
+Projects
+AutonomousX: TPU-Native LLM Training Organization (Instinct Model Family)[HuggingFace]
+•Built and open-sourced25+ LLMs (120M–1.4B params)by engineeringTPU-native distributed pipelines
+(JAX pmap)under AutonomousX.
+•Trained theInstinct model familyon500B+ tokens(PILE, DOLMA) under extreme overtraining regimes to
+studyscaling laws, convergence, and degeneration dynamics.
+•Implemented efficient dataset streaming, binary tokenization (.bin), and multi-host checkpointing onGoogle TPU
+podswithout any external team support.
+•Open-sourced complete pipelines—including HuggingFace weights, training logs, and a 10-minute TPU setup guide
+enabling full reproducibility for researchers.
+PathoPreter: Clinical-Grade SNV Pathogenicity Ranker (DNA Foundation Model)[HuggingFace]
+•Developed ahybrid genomic foundation model (500M params)fusing a Nucleotide Transformer backbone
+with clinical tabular features forSNV pathogenicity prediction.
+•Achieved0.9186 ROC-AUCon a rigorous 14k rare-variant benchmark, outperforming industry SOTA
+(AlphaMissense, CADD) by+0.32 ROC-AUC.
+•Designed aranking-first clinical triage systemdemonstrating75%+ pathogen recallwhile testing only
+5–10% of variants, drastically reducing lab turnaround time and costs.
+•Validated biological learning viaSHAP ablation studies(showing 64.9% reliance on raw DNA) and
+open-sourced theend-to-end reproducible pipeline.
+PathoPreter V2: Explainable ML + LLM Pipeline for Clinical SNV Interpretation[GitHub]
+•BuiltPathoScan, a high-performance clinical interpretation system combining anXGBoost classifierwith
+LLM-based reasoningover SHAP visualizations.
+•Achieved0.97+ ROC-AUCon large real-world datasets and0.767 ROC-AUCon a 14k hard benchmark,
+outperforming established tools like CADD and REVEL.
+•Engineered strictleakage-free datasetsand validated robustness via permutation tests, showing dominant
+learning reliance on evolutionary conservation over positional bias.
+•Deployed aninteractive web platformoptimized for clinical decision-making, featuring real-time predictions and
+automatedLLM-generated clinical insight reports.
+Large-Scale ClinVar SNV Dataset Pipeline for Genomic ML (1.25M Variants)[Dataset Pipeline]
+•Architected anend-to-end 32-core parallelized data pipeline, reducing processing time of250GB+
+genomic datafrom 150 hours to under 20 hours.
+•Transformed7.7M raw ClinVar recordsinto a pristine, leakage-free dataset of1.25M high-quality SNVs
+optimized for ML evaluation and benchmarking.
+•Integrated multi-source clinical data (gnomAD, dbNSFP, hg38) to generate50+ predictive featuresalongside
+raw GRCh38 DNA sequence mapping.
+•Enforced strict preprocessing to eliminate HGVS identifiers, providing a balanced300K subsettailored for stable,
+reliable transformer-based model training.
+BroLang Compiler + VM Integration[GitHub]
+•Designed a complete compiler from scratch for a custom language (BroLang), implementing aLexer, Parser,
+AST, and Bytecode Generator.
+•Seamlessly integrated the compiler output with acustom 16-bit Virtual Machinefor direct bytecode execution
+on virtual hardware.
+•Engineered a self-contained execution ecosystem fully supporting complex conditional statements, loops, and
+standard I/O print functions.
+•Tech Stack:Modern C++17, custom binary bytecode formatting, and advanced compiler pipeline design
+principles.
+RohitVM + Virtual CPU (16-bit Architecture)[GitHub]
+•Developed a highly optimized16-bit CPU emulatorfeaturing a fully functional 65KB RAM, hardware registers,
+and dynamic stack memory.
+•Implemented a robustcustom instruction set architecture (ISA)including core operations: MOV, ADD,
+SUB, JMP, CMP, PUSH/POP, PRINT, and HALT.
+•Built the complete runtime execution environment designed to natively decode, track, and execute bytecode
+originating from the BroLang compiler.
+•Tech Stack:C++, explicit manual memory management, instruction decoding algorithms, and high-performance
+runtime loops.
+Technical Skills
+Languages:C++, Python, TypeScript/JavaScript, SQL
+AI & Distributed Training:LLM Pretraining & Fine-tuning, TPU (v4/v6e) & GPU (A100/H100) Clusters, JAX
+pmap, Scaling Laws, Mixed Precision (BF16), Gradient Checkpointing, XAI (SHAP)
+Frameworks & Web:JAX/Flax, PyTorch, HuggingFace, React, Next.js, FastAPI, PostgreSQL, MongoDB
+Cloud & Systems Architecture:GCP (TPU Research Cloud), AWS, Docker, Linux, Compiler Design, Virtual
+Machines, POSIX Sockets
+Achievements
+Awarded Google TRC grant for 320 TPU access (SPOT + STANDARD VMs).
+Awarded AMD MI300X GPU access for 300 non-preemptive hours
+IOQM (PRMO): Qualified for Indian Olympiad Qualifier in Mathematics [Certificate]
+KVPY SA: AIR 2590 [Certificate]
+LeetCode:Knight (2013), 300+ problems solved [Profile]
+CodeChef:4-Star (1818) [Profile]
+Codeforces:Specialist (1417) [Profile]
+CodeChef START166B:Global Rank 9 [Contest]
+
+[Step 8] Planning...
+RAW:
+{
+  "action": "run_python",
+  "code": "with open(r'C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\notes3.txt','r',encoding='utf-8') as f:\n    print(f.read())",
+  "reason": "Read current contents of notes3.txt to verify and possibly add project description"
+}
+PARSED:
+{
+  "action": "run_python",
+  "code": "with open(r'C:\\Users\\yrohi\\Documents\\CODING\\PROJECTS\\AI-Agent\\Portfolio\\notes3.txt','r',encoding='utf-8') as f:\n    print(f.read())",
+  "reason": "Read current contents of notes3.txt to verify and possibly add project description",
+  "input": "",
+  "path": "",
+  "selector": "",
+  "text": ""
+}
+RESULT:
+Content of Resume_rohit_yadav.pdf:
+Rohit Yadav
+Built 25+ LLMs from scratch•120M–1.4B params•TPU clusters•Trained on 500 Billion+ tokens
++91 8849994303|yrohit1825@gmail.com |linkedin.com/in/rohit-yadav-25535b256 |github.com/YADAV1825 |
+rohit-portfolio-yadav1825.vercel.app
+Education
+National Institute of Technology, JalandharJalandhar, India
+Bachelor of Technology in Information Technology Aug 2023 – Aug 2027
+Green Valley School for ChildrenGandhinagar, India
+CBSE Board 12th May 2021 – May 2023
+Professional Summary
+Third-year undergraduate and Systems + AI builder who enjoys building complex systems from scratch. Built 25+
+LLMs from scratch (120M–1.4B parameters) on Google’s TPU clusters, working with 10TB+ datasets (PILE, DOLMA)
+and 500B+ tokens. Experienced inpretraining, fine-tuning, and continual pretrainingof large-scale models.
+Designed high-throughput data pipelines and tokenization workflows for distributed training. Experience developing
+clinical-scale genomic ML systems and performance-critical infrastructure. Awarded Google TPU Research Cloud (TRC)
+grant and AMD MI300X compute access for large-scale experimentation.
+Experience
+Full-Stack Web Developer InternJun 2025 – Jul 2025
+Skylark Express Delhi Pvt Ltd On-site, Gurugram
+•Contributed to the development of an internal logistics tracking dashboard, improving data visibility and
+operational workflows.
+•Built and optimized frontend components usingReact, Next.js, and TypeScript, focusing on performance and
+reusability.
+•IntegratedREST APIsto enable seamless data flow between backend services and user interfaces.
+•Improved UI responsiveness and system efficiency, enhancing overall user experience for internal teams.
+Projects
+AutonomousX: TPU-Native LLM Training Organization (Instinct Model Family)[HuggingFace]
+•Built and open-sourced25+ LLMs (120M–1.4B params)by engineeringTPU-native distributed pipelines
+(JAX pmap)under AutonomousX.
+•Trained theInstinct model familyon500B+ tokens(PILE, DOLMA) under extreme overtraining regimes to
+studyscaling laws, convergence, and degeneration dynamics.
+•Implemented efficient dataset streaming, binary tokenization (.bin), and multi-host checkpointing onGoogle TPU
+podswithout any external team support.
+•Open-sourced complete pipelines—including HuggingFace weights, training logs, and a 10-minute TPU setup guide
+enabling full reproducibility for researchers.
+PathoPreter: Clinical-Grade SNV Pathogenicity Ranker (DNA Foundation Model)[HuggingFace]
+•Developed ahybrid genomic foundation model (500M params)fusing a Nucleotide Transformer backbone
+with clinical tabular features forSNV pathogenicity prediction.
+•Achieved0.9186 ROC-AUCon a rigorous 14k rare-variant benchmark, outperforming industry SOTA
+(AlphaMissense, CADD) by+0.32 ROC-AUC.
+•Designed aranking-first clinical triage systemdemonstrating75%+ pathogen recallwhile testing only
+5–10% of variants, drastically reducing lab turnaround time and costs.
+•Validated biological learning viaSHAP ablation studies(showing 64.9% reliance on raw DNA) and
+open-sourced theend-to-end reproducible pipeline.
+PathoPreter V2: Explainable ML + LLM Pipeline for Clinical SNV Interpretation[GitHub]
+•BuiltPathoScan, a high-performance clinical interpretation system combining anXGBoost classifierwith
+LLM-based reasoningover SHAP visualizations.
+•Achieved0.97+ ROC-AUCon large real-world datasets and0.767 ROC-AUCon a 14k hard benchmark,
+outperforming established tools like CADD and REVEL.
+•Engineered strictleakage-free datasetsand validated robustness via permutation tests, showing dominant
+learning reliance on evolutionary conservation over positional bias.
+•Deployed aninteractive web platformoptimized for clinical decision-making, featuring real-time predictions and
+automatedLLM-generated clinical insight reports.
+Large-Scale ClinVar SNV Dataset Pipeline for Genomic ML (1.25M Variants)[Dataset Pipeline]
+•Architected anend-to-end 32-core parallelized data pipeline, reducing processing time of250GB+
+genomic datafrom 150 hours to under 20 hours.
+•Transformed7.7M raw ClinVar recordsinto a pristine, leakage-free dataset of1.25M high-quality SNVs
+optimized for ML evaluation and benchmarking.
+•Integrated multi-source clinical data (gnomAD, dbNSFP, hg38) to generate50+ predictive featuresalongside
+raw GRCh38 DNA sequence mapping.
+•Enforced strict preprocessing to eliminate HGVS identifiers, providing a balanced300K subsettailored for stable,
+reliable transformer-based model training.
+BroLang Compiler + VM Integration[GitHub]
+•Designed a complete compiler from scratch for a custom language (BroLang), implementing aLexer, Parser,
+AST, and Bytecode Generator.
+•Seamlessly integrated the compiler output with acustom 16-bit Virtual Machinefor direct bytecode execution
+on virtual hardware.
+•Engineered a self-contained execution ecosystem fully supporting complex conditional statements, loops, and
+standard I/O print functions.
+•Tech Stack:Modern C++17, custom binary bytecode formatting, and advanced compiler pipeline design
+principles.
+RohitVM + Virtual CPU (16-bit Architecture)[GitHub]
+•Developed a highly optimized16-bit CPU emulatorfeaturing a fully functional 65KB RAM, hardware registers,
+and dynamic stack memory.
+•Implemented a robustcustom instruction set architecture (ISA)including core operations: MOV, ADD,
+SUB, JMP, CMP, PUSH/POP, PRINT, and HALT.
+•Built the complete runtime execution environment designed to natively decode, track, and execute bytecode
+originating from the BroLang compiler.
+•Tech Stack:C++, explicit manual memory management, instruction decoding algorithms, and high-performance
+runtime loops.
+Technical Skills
+Languages:C++, Python, TypeScript/JavaScript, SQL
+AI & Distributed Training:LLM Pretraining & Fine-tuning, TPU (v4/v6e) & GPU (A100/H100) Clusters, JAX
+pmap, Scaling Laws, Mixed Precision (BF16), Gradient Checkpointing, XAI (SHAP)
+Frameworks & Web:JAX/Flax, PyTorch, HuggingFace, React, Next.js, FastAPI, PostgreSQL, MongoDB
+Cloud & Systems Architecture:GCP (TPU Research Cloud), AWS, Docker, Linux, Compiler Design, Virtual
+Machines, POSIX Sockets
+Achievements
+Awarded Google TRC grant for 320 TPU access (SPOT + STANDARD VMs).
+Awarded AMD MI300X GPU access for 300 non-preemptive hours
+IOQM (PRMO): Qualified for Indian Olympiad Qualifier in Mathematics [Certificate]
+KVPY SA: AIR 2590 [Certificate]
+LeetCode:Knight (2013), 300+ problems solved [Profile]
+CodeChef:4-Star (1818) [Profile]
+Codeforces:Specialist (1417) [Profile]
+CodeChef START166B:Global Rank 9 [Contest]
+
+=== Agent stopped ===
+
+
+
+
+
