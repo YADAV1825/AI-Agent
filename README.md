@@ -3,7 +3,18 @@
 > **Current implementation is a sample with API key from deployment via lightning AI for inference**
 
 > **A Sophisticated MVP Platform That Transforms Any API Key into an Autonomous OS-Level Intelligent Agent**
+---
 
+**DEMO VIDEO (click to play):**
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=oneWphrOJEc">
+    <img 
+      src="https://img.youtube.com/vi/oneWphrOJEc/maxresdefault.jpg" 
+      alt="Watch Demo"
+      width="700"
+    />
+  </a>
+</p>
 ---
 
 ## 📋 Executive Summary
