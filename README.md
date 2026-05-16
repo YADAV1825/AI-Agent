@@ -5,7 +5,8 @@
 > **A Sophisticated MVP Platform That Transforms Any API Key into an Autonomous OS-Level Intelligent Agent**
 ---
 
-**DEMO VIDEO (click to play):**
+**DEMO VIDEO (click to play):** In the video the Agent was asked to broswe the github profile YADAV1825 and then write about the person in a blank word document here the mdoel even read the Resume PDF on the website with pypdf2 package of python by downloading and running shell commands on prompting and asking permission of user before running!!
+
 <p align="center">
   <a href="https://www.youtube.com/watch?v=oneWphrOJEc">
     <img 
